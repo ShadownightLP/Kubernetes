@@ -2,6 +2,7 @@
 TITLE Deploy App from C# to Docker Container Copyright Julius Aigner
 mode con cols=238 lines=85
 cls
+
 TITLE Check for Prerequisites
 set Programm=docker
 set Programm2=conhost
