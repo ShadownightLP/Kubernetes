@@ -3,47 +3,6 @@ TITLE Deploy App from C# to Docker Container Copyright Julius Aigner
 mode con cols=238 lines=85
 cls
 
-TITLE Check for Prerequisites
-set Programm=docker
-set Programm2=conhost
-set Programm3=com.docker.proxy
-set Programm4=wslhost
-set Programm5 = vpnkit
-set Programm6 = wsl
-set Programm7 = vpnkit-bridge
-set Programm8 = com.docker.backend
-
-tasklist |find /i "%Programm%" >nul
-tasklist |find /i "%Programm2%" >nul
-tasklist |find /i "%Programm3%" >nul
-tasklist |find /i "%Programm4%" >nul
-tasklist |find /i "%Programm5%" >nul
-tasklist |find /i "%Programm6%" >nul
-tasklist |find /i "%Programm7%" >nul
-tasklist |find /i "%Programm8%" >nul
-if %errorlevel% == 0 (
-echo Das Programm "%Programm%"  leauft gerade! Alles okay!
-echo Das Programm "%Programm2%" leauft gerade! Alles okay!
-echo Das Programm "%Programm3%" leauft gerade! Alles okay!
-echo Das Programm "%Programm4%" leauft gerade! Alles okay!
-echo Das Programm "%Programm5%" leauft gerade! Alles okay!
-echo Das Programm "%Programm6%" leauft gerade! Alles okay!
-echo Das Programm "%Programm7%" leauft gerade! Alles okay!
-echo Das Programm "%Programm8%" leauft gerade! Alles okay!
-pause
-) else (
-echo Das Programm "%Programm%"  leauft gerade nicht! Bitte Docker starten oder installieren!
-echo Das Programm "%Programm2%" leauft gerade nicht! Bitte Docker starten oder installieren!
-echo Das Programm "%Programm3%" leauft gerade nicht! Bitte Docker starten oder installieren!
-echo Das Programm "%Programm4%" leauft gerade nicht! Bitte Docker starten oder installieren!
-echo Das Programm "%Programm5%" leauft gerade nicht! Bitte Docker starten oder installieren!
-echo Das Programm "%Programm6%" leauft gerade nicht! Bitte Docker starten oder installieren!
-echo Das Programm "%Programm7%" leauft gerade nicht! Bitte Docker starten oder installieren!
-echo Das Programm "%Programm8%" leauft gerade nicht! Bitte Docker starten oder installieren!
-pause
-exit
-)
-
 TITLE Auswahl
 @echo Hauptmenue:
 @echo (1) Appnamen eingeben
