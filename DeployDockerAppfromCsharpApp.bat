@@ -11,7 +11,7 @@ cls
 TITLE Deploy App from C# to Docker Container
 set /p EINGABE1= Nummer eingeben:
 REM COPYRIGHT JULIUS AIGNER 2020
-@echo  %EINGABE1%
+@echo %EINGABE1% 
 @echo Durch Druecken erreicht man die naechste Stufe und die App wird containerisiert.
 @echo Der Dockerfile sollte folgendermassen aussehen:
 @echo FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
@@ -23,7 +23,7 @@ TITLE Erstellung
 M:
 cd M:\Dokumente\Visual Studio 2019\Projects\%Eingabe1%
 dotnet publish -c Release
-docker build -t counter-image -f Dockerfile .
+docker build -t %EINGABE1% -f Dockerfile .
 docker create --name core-counter counter-image
 @echo Image erfolgreich erstellt!
 pause
