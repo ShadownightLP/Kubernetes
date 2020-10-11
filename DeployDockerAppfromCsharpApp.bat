@@ -1,27 +1,26 @@
-@echo off
 TITLE Deploy App from C# to Docker Container Copyright Julius Aigner
 mode con cols=238 lines=85
 cls
-
-TITLE Auswahl
 @echo Hauptmenue:
 @echo (1) Appnamen eingeben
+@echo off
 pause
 cls
 TITLE Deploy App from C# to Docker Container
-set /p EINGABE1= Nummer eingeben:
+set /p EINGABE= Nummer eingeben:
 REM COPYRIGHT JULIUS AIGNER 2020
+set /p EINGABE1=Namen eingeben:
 @echo  %EINGABE1%
 @echo Durch Druecken erreicht man die naechste Stufe und die App wird containerisiert.
 @echo Der Dockerfile sollte folgendermassen aussehen:
 @echo FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
-@echo COPY bin/Release/netcoreapp3.1/publish/ App/
+@echo COPY bin/Release/netcoreapp3.1/publish/App/
 @echo WORKDIR /App
 @echo ENTRYPOINT ["dotnet", "NetCore.Docker.dll"]
 pause
 TITLE Erstellung
 M:
-cd M:\Dokumente\Visual Studio 2019\Projects\%Eingabe1%
+cd M:\Dokumente\Visual Studio 2019\Projects\%Eingabe1%\App
 dotnet publish -c Release
 docker build -t counter-image -f Dockerfile .
 docker create --name core-counter counter-image
@@ -51,6 +50,7 @@ docker create --name %EINGABE1% %EINGABE1%-image
 if %EINGABE2%==h goto Hauptmenue
 
 :Auswahl2
+cls
 TITLE Container-Start
 @echo Start des Containers:
 docker start %EINGABE1%
@@ -61,6 +61,7 @@ set /p EINGABE2= Um zurueck zum Hauptmenue zu gelangen h druecken:
 if %EINGABE2%==h goto Hauptmenue
 
 :Auswahl3
+cls
 TITLE Container-Stop
 @echo Stop des Containers:
 docker stop %EINGABE1%
@@ -71,6 +72,7 @@ set /p EINGABE2= Um zurueck zum Hauptmenue zu gelangen h druecken:
 if %EINGABE2%==h goto Hauptmenue
 
 :Hauptmenue
+cls
 TITLE Moeglichkeiten:
 @echo Moeglichkeiten:
 @echo (1) Ansehen des Containers
@@ -78,14 +80,14 @@ TITLE Moeglichkeiten:
 @echo (3) Stop des Containers
 @echo off
 pause
-set /p EINGABE2= Nummer eingeben:
+set /p EINGABE2= Nummer eingeben oder h zum Menue:
 if %EINGABE2%==1 goto Auswahl1
 if %EINGABE2%==2 goto Auswahl2
 if %EINGABE2%==2 goto Auswahl3
 if %EINGABE2%==h goto start
 
 :start
-TITLE Hauptmenue
+cls
 @echo Hauptmenue:
 @echo (1) Appnamen eingeben
 @echo off
@@ -94,7 +96,6 @@ cls
 set /p EINGABE1= Nummer eingeben:
 
 @echo  %EINGABE1%
-TITLE Auswahl
 @echo Durch Druecken erreicht man die naechste Stufe und die App wird containerisiert.
 @echo Der Dockerfile sollte folgendermassen aussehen:
 @echo FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
