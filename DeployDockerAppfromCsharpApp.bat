@@ -22,8 +22,10 @@ TITLE Erstellung
 M:
 cd M:\Dokumente\Visual Studio 2019\Projects\%Eingabe1%\App
 dotnet publish -c Release
-docker build -t counter-image -f Dockerfile .
-docker create --name core-counter counter-image
+@echo (1) Imagenamen eingeben (nur lowercase!)
+set /p EINGABE3= Namen des Containers eingeben:
+docker build -t %Eingabe3% -f Dockerfile .
+docker create --name core-counter %Eingabe3%
 @echo Image erfolgreich erstellt!
 pause
 cls
@@ -46,7 +48,6 @@ TITLE Ausgabe Container
 @echo Container ansehen:
 docker ps -a
 set /p EINGABE2= Um zurück zum Hauptmenue zu gelangen h druecken:
-docker create --name %EINGABE1% %EINGABE1%-image
 if %EINGABE2%==h goto Hauptmenue
 
 :Auswahl2
