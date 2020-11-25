@@ -1,15 +1,15 @@
-apiVersion: extensions/v1beta1
+---
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: happy-ingress
-  annotations:
-    INGRESS.kubernetes.io/rewrite-target: /
+    name: echo-ingress
+    annotations:
+        haproxy.org/path-rewrite: "/"
 spec:
-  rules:
-  - host: happy.k8s.io
-    http:
-      paths:
-      - path: /echoserver
-        backend:
-          serviceName: echoserver-svc
-          servicePort: 80
+    rules:
+    - http:
+        paths:
+        - path: /echo
+          backend:
+            serviceName: echo-service
+            servicePort: 80
