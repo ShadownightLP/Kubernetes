@@ -10,5 +10,5 @@ spec:
         paths:
         - path: /echo
           backend:
-            serviceName: app
+            serviceName: web-ingress
             servicePort: 80
