@@ -10,5 +10,5 @@ spec:
         paths:
         - path: /echo
           backend:
-            serviceName: echo-service
+            serviceName: app
             servicePort: 80
